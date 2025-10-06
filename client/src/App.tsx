@@ -236,8 +236,8 @@ function App() {
   const uniqueStatuses = [...new Set(planters.map(p => p.status))];
   const stages = ['PREPARE', 'ASSESS', 'CARE', 'EQUIP'];
 
-  const getStageColor = (stage) => {
-    const colors = {
+  const getStageColor = (stage: string) => {
+    const colors: { [key: string]: string } = {
       'PREPARE': 'bg-blue-100 text-blue-700',
       'ASSESS': 'bg-yellow-100 text-yellow-700',
       'CARE': 'bg-green-100 text-green-700',
@@ -246,8 +246,8 @@ function App() {
     return colors[stage] || 'bg-gray-100 text-gray-700';
   };
 
-  const getStatusColor = (status) => {
-    const colors = {
+  const getStatusColor = (status: string) => {
+    const colors: { [key: string]: string } = {
       'Active Care': 'bg-green-500',
       'New 2025': 'bg-blue-500',
       'Potential': 'bg-yellow-500',
