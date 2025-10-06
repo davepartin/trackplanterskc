@@ -1,8 +1,29 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Plus, Download, Calendar, Users, Target, Award, TrendingUp } from 'lucide-react';
 
+// Define Planter type
+interface Planter {
+  id: number;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  fieldStaffRep: string;
+  church: string;
+  careStart: string | null;
+  endDate: string | null;
+  stage: string;
+  status: string;
+  funding: number;
+  training: number | null;
+  sendingChurch: string;
+  spouseFirst: string;
+  spouseLast: string;
+  orientation: string | null;
+}
+
 // Sample data structure based on your spreadsheet
-const initialPlanters = [
+const initialPlanters: Planter[] = [
   {
     id: 1,
     firstName: "Luis",
@@ -196,13 +217,13 @@ const initialPlanters = [
 ];
 
 function App() {
-  const [planters, setPlanters] = useState(initialPlanters);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterRep, setFilterRep] = useState('All Reps');
-  const [filterStatus, setFilterStatus] = useState('All Status');
-  const [filterStage, setFilterStage] = useState('All Stages');
-  const [selectedPlanter, setSelectedPlanter] = useState(null);
-  const [showAddModal, setShowAddModal] = useState(false);
+  const [planters, setPlanters] = useState<Planter[]>(initialPlanters);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [filterRep, setFilterRep] = useState<string>('All Reps');
+  const [filterStatus, setFilterStatus] = useState<string>('All Status');
+  const [filterStage, setFilterStage] = useState<string>('All Stages');
+  const [selectedPlanter, setSelectedPlanter] = useState<Planter | null>(null);
+  const [showAddModal, setShowAddModal] = useState<boolean>(false);
 
   // Calculate statistics
   const stats = useMemo(() => {
