@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Plus, Download, Calendar, Users, Target, Award, TrendingUp } from 'lucide-react';
+import { Search, Download, Users, Target, Award, TrendingUp } from 'lucide-react';
 
 // Define Planter type
 interface Planter {
@@ -217,13 +217,12 @@ const initialPlanters: Planter[] = [
 ];
 
 function App() {
-  const [planters, setPlanters] = useState<Planter[]>(initialPlanters);
+  const [planters] = useState<Planter[]>(initialPlanters);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [filterRep, setFilterRep] = useState<string>('All Reps');
   const [filterStatus, setFilterStatus] = useState<string>('All Status');
   const [filterStage, setFilterStage] = useState<string>('All Stages');
   const [selectedPlanter, setSelectedPlanter] = useState<Planter | null>(null);
-  const [showAddModal, setShowAddModal] = useState<boolean>(false);
 
   // Calculate statistics
   const stats = useMemo(() => {
@@ -267,16 +266,6 @@ function App() {
     return colors[stage] || 'bg-gray-100 text-gray-700';
   };
 
-  const getStatusColor = (status: string) => {
-    const colors: { [key: string]: string } = {
-      'Active Care': 'bg-green-500',
-      'New 2025': 'bg-blue-500',
-      'Potential': 'bg-yellow-500',
-      'Ending Soon': 'bg-red-500'
-    };
-    return colors[status] || 'bg-gray-500';
-  };
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -291,13 +280,6 @@ function App() {
               <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
                 <Download className="w-4 h-4" />
                 Export
-              </button>
-              <button 
-                onClick={() => setShowAddModal(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
-              >
-                <Plus className="w-4 h-4" />
-                Add Planter
               </button>
             </div>
           </div>
