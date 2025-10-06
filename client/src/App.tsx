@@ -627,12 +627,14 @@ function App() {
                         {new Date(selectedPlanter.careStart).toLocaleDateString()}
                       </p>
                     </div>
-                    <div>
-                      <label className="text-sm font-medium text-gray-500">Care End Date</label>
-                      <p className="mt-1 text-sm text-gray-900">
-                        {new Date(selectedPlanter.endDate).toLocaleDateString()}
-                      </p>
-                    </div>
+                    {selectedPlanter.endDate && (
+                      <div>
+                        <label className="text-sm font-medium text-gray-500">Care End Date</label>
+                        <p className="mt-1 text-sm text-gray-900">
+                          {new Date(selectedPlanter.endDate).toLocaleDateString()}
+                        </p>
+                      </div>
+                    )}
                   </>
                 )}
                 {selectedPlanter.orientation && (
